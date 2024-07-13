@@ -17,23 +17,24 @@ const allproduct=[
     {id:8, img_src:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4f970JSQv5b_zza0Xghfq-wRwPJroW_6FFQ&s',price:11200,name_product:'phone2'},
 
     {id:9, img_src:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0gw5I5PxtuFqjMlyr4O0o-iiW6zFMDnryIA&s',price:927200,name_product:'computar'},
-
 ]
 
+
 let $=document;
-let contenar=$.querySelector(".contenar")
-let house_svg=$.querySelector('.house_svg')
+let contenar=$.querySelector(".contenar");
+let house_svg=$.querySelector('.house_svg');
 let vaz2=false;
 let list_select_product=[];
 let totalll_price;
 let page=0;
 
+
 // createElement box first page-----------------------------------
 function createElement(object) {
-    let box=$.createElement("div")
+    let box=$.createElement("div");
     box.className='box';
 
-    let id_box=$.createElement('span')
+    let id_box=$.createElement('span');
     id_box.className='id_box'
     id_box.innerHTML=object.id;
 
@@ -41,41 +42,38 @@ function createElement(object) {
     name_product.className='name_product';
     name_product.innerHTML=object.name_product;
 
-    let img_product=$.createElement('img')
+    let img_product=$.createElement('img');
     img_product.className='img_product';
     img_product.src=object.img_src;
 
-    let parent_bay_price=$.createElement('div')
+    let parent_bay_price=$.createElement('div');
     parent_bay_price.className='parent_bay_price';
 
-    let price=$.createElement("spen")
-    price.className='price'
+    let price=$.createElement("spen");
+    price.className='price';
     price.innerHTML=object.price;
 
-    let btn_bay=$.createElement('button')
-    btn_bay.className='btn_bay'
-    btn_bay.innerHTML='bay'
-    btn_bay.addEventListener('click',func_bay)
+    let btn_bay=$.createElement('button');
+    btn_bay.className='btn_bay';
+    btn_bay.innerHTML='bay';
+    btn_bay.addEventListener('click',func_bay);
 
-    parent_bay_price.append(price,btn_bay)
-    box.append(img_product,id_box,name_product,parent_bay_price)
-    contenar.append(box)
+    parent_bay_price.append(price,btn_bay);
+    box.append(img_product,id_box,name_product,parent_bay_price);
+    contenar.append(box);
    
 }
    
 // add number in svg baslet-----------------------------
 function add_number_toBasket() {
     if(list_select_product[0]){
-
         $.querySelector('.number').innerHTML=(list_select_product.length);
-        $.querySelector('.number').style.padding='1px'
+        $.querySelector('.number').style.padding='1px';
     }
     else{
-
         $.querySelector('.number').innerHTML='';
-         $.querySelector('.number').style.padding='0'
+         $.querySelector('.number').style.padding='0';
     }
-
 }
 
 // click in button by the box -----------------------------------
@@ -84,14 +82,14 @@ function func_bay(event){
     let selet_in_inList=(event.target.parentElement.parentElement.children[1].innerHTML)-1;
     if(list_select_product[0]){
         list_select_product.forEach(function(hasAbject){
-            if(allproduct[selet_in_inList]==hasAbject)   {
+            if(allproduct[selet_in_inList]==hasAbject){
                 vazHas=true;
                 return;
             }})
         if(!vazHas){
             list_select_product.push(allproduct[selet_in_inList])
             add_number_toBasket();}
-        else alert("تو سبد وجود دارع")
+        else alert("تو سبد وجود دارع");
     }
     else{
         list_select_product.push(allproduct[selet_in_inList])
@@ -115,7 +113,7 @@ function click_house() {
     if(page){
         contenar.innerHTML='';
         contenar.className='contenar';
-        totalll_price.remove()
+        totalll_price.remove();
         vaz2=false;
         page=0;
         allproduct.forEach(function(object){
@@ -125,82 +123,80 @@ function click_house() {
 
 // createElement basket -----------------------------------
 function createElementBasket(selet_obgect) {
-    let basket=$.createElement('div')
+    let basket=$.createElement('div');
     basket.className='basket';
 
-    let parent_img_price=$.createElement('div')
+    let parent_img_price=$.createElement('div');
     parent_img_price.className='parent_img_price';
 
-    let id_box_basket=$.createElement('span')
-    id_box_basket.className='id_box_basket'
+    let id_box_basket=$.createElement('span');
+    id_box_basket.className='id_box_basket';
     id_box_basket.innerHTML=selet_obgect.id;
 
     let img_product_basket=$.createElement("img");
     img_product_basket.src=selet_obgect.img_src;
     img_product_basket.className='img_product_basket';
 
-    let price_product_basket=$.createElement('span')
+    let price_product_basket=$.createElement('span');
     price_product_basket.className='price_product_basket';
     price_product_basket.innerHTML=selet_obgect.price;
 
-    let parent_input_bay=$.createElement('div')
+    let parent_input_bay=$.createElement('div');
     parent_input_bay.className='parent_input_bay';
 
-    let input_number=$.createElement('input')
+    let input_number=$.createElement('input');
     input_number.type='number';
     input_number.min='1';
     input_number.value='1';
-    input_number.addEventListener("input",chang_input)
+    input_number.addEventListener("input",chang_input);
     input_number.className='input_number';
    
 
-    let finsh_bay=$.createElement('button')
+    let finsh_bay=$.createElement('button');
     finsh_bay.className='finsh_bay';
     finsh_bay.innerHTML='finsh bay';
 
-    let remove_product=$.createElement('button')
+    let remove_product=$.createElement('button');
     remove_product.className='remove_product';
-    remove_product.addEventListener('click',remove_basket)
+    remove_product.addEventListener('click',remove_basket);
     remove_product.innerHTML='remove';
 
   
-    parent_img_price.append(img_product_basket,price_product_basket)
-    parent_input_bay.append(id_box_basket,input_number,finsh_bay,remove_product)
-    basket.append(parent_img_price,parent_input_bay)
-    contenar.append(basket)
+    parent_img_price.append(img_product_basket,price_product_basket);
+    parent_input_bay.append(id_box_basket,input_number,finsh_bay,remove_product);
+    basket.append(parent_img_price,parent_input_bay);
+    contenar.append(basket);
     if(!vaz2){
-        totalll_price=$.createElement('strong')
+        totalll_price=$.createElement('strong');
         totalll_price.className='total_price';
-       $.querySelector('.parent_totall').append(totalll_price)
-       vaz2=true;
+        $.querySelector('.parent_totall').append(totalll_price);
+        vaz2=true;
     }
     if(list_select_product.length===contenar.childElementCount)
-        chang_input()
+        chang_input();
 }
 
 // chang_input------------------------------------
 function chang_input() {
     let totall=0;
-    all=$.querySelectorAll('.price_product_basket')
+    all=$.querySelectorAll('.price_product_basket');
     all.forEach(function(element){
-        totall+=(+element.innerHTML)*(element.parentElement.parentElement.children[1].children[1].value)
+        totall+=(+element.innerHTML)*(element.parentElement.parentElement.children[1].children[1].value);
     })
-    totalll_price.innerHTML="totall price : " +totall
+    totalll_price.innerHTML="totall price : " +totall;
 }
   
 // remove------------------------------------
 function remove_basket(elm) {
-    (elm.target.parentElement.children[0].innerHTML)
-
     let which=list_select_product.findIndex(function(object){
         if(elm.target.parentElement.children[0].innerHTML==object.id)
             return object;
     })
    
-    list_select_product.splice(which,1)
+    list_select_product.splice(which,1);
     elm.target.parentElement.parentElement.remove();
     chang_input();
-    add_number_toBasket()
+    add_number_toBasket();
 }
 
 // window -------------------------------------------load
@@ -210,5 +206,5 @@ window.onload=function (){
     })
 }
 
-house_svg.addEventListener('click',click_house)
-$.querySelector('.basket_number').addEventListener('click',click_basket_by)
+house_svg.addEventListener('click',click_house);
+$.querySelector('.basket_number').addEventListener('click',click_basket_by);
