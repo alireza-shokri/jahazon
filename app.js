@@ -1,9 +1,9 @@
 const allproduct=[
-    {id:1, img_src:'https://akm-img-a-in.tosshub.com/indiatoday/images/story/202112/photo-1571607182000-b1d278eb9b_1200x768.jpeg?size=1200:675',price:3200,name_product:'mpuntn'},
+    {id:1, img_src:'https://akm-img-a-in.tosshub.com/indiatoday/images/story/202112/photo-1571607182000-b1d278eb9b_1200x768.jpeg?size=1200:675',price:3200,name_product:'mountain'},
 
     {id:2, img_src:'https://www.economist.com/img/b/1280/720/90/sites/default/files/20201017_WBP503.jpg', price:3773,name_product:'stor'},
 
-    {id:3, img_src:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMcerxj5Gbd0MOdEBT3c3QkPxiiNP0-J83Dg&s',price:39200,name_product:'alcha'},
+    {id:3, img_src:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSMcerxj5Gbd0MOdEBT3c3QkPxiiNP0-J83Dg&s',price:39200,name_product:'plum'},
 
     {id:4, img_src:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQD8AISGp2zD-rlDW-VumyV8WxIJaHUIm00pA&s',price:31200,name_product:'fruit'},
 
