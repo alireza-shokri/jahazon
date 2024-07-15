@@ -19,14 +19,14 @@ const allproduct=[
     {id:9, img_src:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0gw5I5PxtuFqjMlyr4O0o-iiW6zFMDnryIA&s',price:927200,name_product:'computar'},
 ]
 
-
 let $=document;
 let contenar=$.querySelector(".contenar");
 let house_svg=$.querySelector('.house_svg');
-let vaz2=false;
 let list_select_product=[];
 let totalll_price;
 let page=0;
+let basket=$.querySelector('.basket')
+let all_basket=$.querySelector('.all_basket')
 
 
 // createElement box first page-----------------------------------
@@ -68,7 +68,7 @@ function createElement(object) {
 function add_number_toBasket() {
     if(list_select_product[0]){
         $.querySelector('.number').innerHTML=(list_select_product.length);
-        $.querySelector('.number').style.padding='1px';
+        $.querySelector('.number').style.padding='2px';
     }
     else{
         $.querySelector('.number').innerHTML='';
@@ -79,33 +79,44 @@ function add_number_toBasket() {
 // click in button by the box -----------------------------------
 function func_bay(event){
     let vazHas=false;
-    let selet_in_inList=(event.target.parentElement.parentElement.children[1].innerHTML)-1;
+    let selet_in_List=(event.target.parentElement.parentElement.children[1].innerHTML)-1;
     if(list_select_product[0]){
         list_select_product.forEach(function(hasAbject){
-            if(allproduct[selet_in_inList]==hasAbject){
+            if(allproduct[selet_in_List]==hasAbject){
                 vazHas=true;
                 return;
             }})
         if(!vazHas){
-            list_select_product.push(allproduct[selet_in_inList])
+            list_select_product.push(allproduct[selet_in_List])
             add_number_toBasket();}
         else alert("تو سبد وجود دارع");
     }
     else{
-        list_select_product.push(allproduct[selet_in_inList])
+        list_select_product.push(allproduct[selet_in_List])
         add_number_toBasket();}
 }
 
 // click basket-----------------------------------------
 function click_basket_by(){
+    console.log(list_select_product)
     if(list_select_product[0]){
-        contenar.innerHTML='';
-        contenar.className='contenar_in_basket';
-        page=1;
-        list_select_product.forEach(object => {
-            createElementBasket(object)
-        });}
-    else alert ('هیچی نیست عزیزم')
+        if(!page){
+            contenar.innerHTML='';
+            basket.innerHTML=''
+            contenar.className='contenar_basket';
+            all_basket.style.display='block'
+            page=1; shomar=0
+            list_select_product.forEach(object => {
+                createElementBasket(object)
+            });
+            chang_input()
+            
+            }
+        }
+        else 
+            if(!page)
+                alert ('هیچی نیست عزیزم')
+        
 }
 
 // click_house-----------------------------------
@@ -113,77 +124,60 @@ function click_house() {
     if(page){
         contenar.innerHTML='';
         contenar.className='contenar';
-        totalll_price.remove();
-        vaz2=false;
+         all_basket.style.display='none'
         page=0;
         allproduct.forEach(function(object){
         createElement(object)
     })}
 }
-
+let shomar=0
 // createElement basket -----------------------------------
 function createElementBasket(selet_obgect) {
-    let basket=$.createElement('div');
-    basket.className='basket';
+    let item=$.createElement('div');
+    item.className='item';
 
-    let parent_img_price=$.createElement('div');
-    parent_img_price.className='parent_img_price';
+    let id_box=$.createElement('span');
+    id_box.className='id_box';
+    id_box.innerHTML=selet_obgect.id;
 
-    let id_box_basket=$.createElement('span');
-    id_box_basket.className='id_box_basket';
-    id_box_basket.innerHTML=selet_obgect.id;
+    let number_list=$.createElement('span');
+    number_list.className='number_list';
+    number_list.innerHTML = ++shomar;
 
-    let img_product_basket=$.createElement("img");
-    img_product_basket.src=selet_obgect.img_src;
-    img_product_basket.className='img_product_basket';
+    let img_basket=$.createElement("img");
+    img_basket.src=selet_obgect.img_src;
+    img_basket.className='img_basket';
 
-    let price_product_basket=$.createElement('span');
-    price_product_basket.className='price_product_basket';
-    price_product_basket.innerHTML=selet_obgect.price;
-
-    let parent_input_bay=$.createElement('div');
-    parent_input_bay.className='parent_input_bay';
+    let price_basket=$.createElement('h4');
+    price_basket.className='price_basket';
+    price_basket.innerHTML=selet_obgect.price;
 
     let input_number=$.createElement('input');
     input_number.type='number';
     input_number.min='1';
     input_number.value='1';
     input_number.addEventListener("input",chang_input);
-    input_number.className='input_number';
+    input_number.className='input_number'
    
+    let remove_item=$.createElement('button');
+    remove_item.className='remove_item';
+    remove_item.addEventListener('click',remove_basket);
+    remove_item.innerHTML='remove';
 
-    let finsh_bay=$.createElement('button');
-    finsh_bay.className='finsh_bay';
-    finsh_bay.innerHTML='finsh bay';
-
-    let remove_product=$.createElement('button');
-    remove_product.className='remove_product';
-    remove_product.addEventListener('click',remove_basket);
-    remove_product.innerHTML='remove';
-
-  
-    parent_img_price.append(img_product_basket,price_product_basket);
-    parent_input_bay.append(id_box_basket,input_number,finsh_bay,remove_product);
-    basket.append(parent_img_price,parent_input_bay);
-    contenar.append(basket);
-    if(!vaz2){
-        totalll_price=$.createElement('strong');
-        totalll_price.className='total_price';
-        $.querySelector('.parent_totall').append(totalll_price);
-        vaz2=true;
-    }
-    if(list_select_product.length===contenar.childElementCount)
-        chang_input();
+    item.append(id_box,number_list,img_basket,price_basket,input_number,remove_item);
+    basket.append(item)
+    contenar.append(all_basket)
+    
 }
 
 // chang_input------------------------------------
 function chang_input() {
     let totall=0;
-    all=$.querySelectorAll('.price_product_basket');
+    all=$.querySelectorAll('.price_basket');
     all.forEach(function(element){
-        totall+=(+element.innerHTML)*(element.parentElement.parentElement.children[1].children[1].value);
+        totall+=(+element.innerHTML)*(element.parentElement.children[4].value);
     })
-    totalll_price.innerHTML="totall price : " +totall;
+   $.querySelector('.totall_price').innerHTML='totall price :  '+totall;
 }
   
 // remove------------------------------------
@@ -194,9 +188,16 @@ function remove_basket(elm) {
     })
    
     list_select_product.splice(which,1);
-    elm.target.parentElement.parentElement.remove();
+    elm.target.parentElement.remove();
     chang_input();
     add_number_toBasket();
+
+    let new_number_list=$.querySelectorAll('.number_list')
+    console.log(new_number_list)
+    for (var i=0;i<new_number_list.length;i++){
+       new_number_list[i].innerHTML=(i+1);
+    }
+  
 }
 
 // window -------------------------------------------load

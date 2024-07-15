@@ -22,7 +22,7 @@ body{
     box-shadow: 2px 2px 7px rgba(180, 174, 166, 0.87);
 }
 
-.title{
+.titll_hed{
     width: fit-content;
     padding: 0.1rem 2rem;
     margin: 20px auto;
@@ -43,6 +43,7 @@ body{
 .number{
     color:white;
     background-color: rgb(255, 0, 0);
+    border-radius: 0.2rem;
 }
 
 
@@ -57,16 +58,7 @@ body{
     row-gap: 24px;
     text-align: center;
 }
-.contenar_in_basket{
-    max-width: 80%;
-    margin: 100px auto 20px auto;
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    column-gap: 5px;
-    row-gap: 1px;
-    text-align: center;
-}
+
 .box{
     width: 300px;
     padding: 10px;
@@ -120,67 +112,109 @@ body{
 }
 
 /* ----------------------------------------------------------- */
-.basket{
-    width: 280px;
+/* basket */
+.contenar_basket{
+    max-width: 80%;
+    margin:8rem auto 6rem auto;
+ 
+}
+ .all_basket{
+    display: none;
+ }
+  
+ .titll_basket{
     display: flex;
     justify-content: space-between;
-    border: 1px solid black;
-    margin: 40px auto 5px ;
-    padding: 6px;
-    gap: 10px;
-    background-color: rgb(241, 241, 241);
-    box-shadow: 1px 1px 7px rgba(133, 130, 126, 0.87);
-
-   }
-.parent_img_price{
-    flex-basis: 48%;
     text-align: center;
-}
-.price_product_basket{
-    display: block;
-    padding: 4px;
-    background-color: rgb(167, 196, 186);
-}
-.parent_input_bay{
-    flex-basis: 48%;
+    padding: 0.5rem;
+    border-bottom: 2px solid black;
+    margin-bottom: 0.5rem;
+ }
+
+
+ .titll_basket *{
+    width: 4.5rem;
+    background-color: rgb(214, 179, 102);
+    padding: 0.5rem;
+    font-family: monospace;
+    font-size: 1rem;
+ }
+
+ .item{
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
-}
-.input_number,.finsh_bay,.remove_product{
-    width: 90%;
-    padding: 8px;
-    outline: none;
-    margin-bottom: 12px;
-}
-.id_box_basket{
-    display: none;
-}
-.img_product_basket{
-    width:100%;
-    height: 160px;
-    object-fit: cover;
-}
-.finsh_bay{
-    background-color: rgb(41, 175, 41);
-    border: 1px solid black;
-}
-.remove_product{
-   background-color: rgba(187, 84, 84, 0.863);
-   border: 1px solid black;
-}
-
-.parent_totall{
+    padding: 0.5rem;
     text-align: center;
-    width: 200px;
-    margin: 40px auto 50px;
-    background-color: rgb(54, 175, 177);
+    margin-bottom: 1rem;
+    border-bottom: 1px solid black;
+ }
+ .item *{
+    width: 4.8rem;
+    
+ }
+ .img_basket:hover{
+    transform: scale(1.5);
+ }
+ .d_box{
+    display: none;
+ }
+ .number_list{
+    border-right: 0.2rem solid orangered;
+    height:3.4rem;
+    line-height: 3.4rem;
+ }
+ 
+ .img_basket{
+    height: 3.4rem
+ }
+ .price_basket{
+    font-size: 1.2rem;
+ }
+ .input_number,.remove_item{
+    outline: none;
+    border: 1px solid black;
+    border-radius: 0.2rem;
+    padding: 0.5rem ;
+    
+ }
+ 
+ .remove_item{
+    background-color: rgba(218, 110, 71, 0.897);
+    cursor: pointer;
+ }
+.remove_item:hover{
+    background-color: orangered;
 }
+ .parent_totall_price{
+    text-align: center;
+    margin:1rem 0 1rem;
+    display: flex;
+    justify-content: end;
+}
+.totall_price{
+    width: 12.3rem;
+    padding: 0.6rem;
+    background-color: rgb(181, 168, 194);
+    border-radius: 0.2rem;
+}
+ .finsh_bay{
+    display: block;
+   width: 12.3rem;
+    float: right;
+    padding: 0.5rem;
+    background-color: rgb(33, 172, 33);
+    border: 1px solid black;
+    border-radius: 0.2rem;
+ }
+ .finsh_bay:hover{
+    background-color: rgb(40, 219, 40);
+    cursor: pointer;
+ }
 
 
 
-
+/* --------------------------media */
 @media screen and (max-width: 1200px){
    .box{
     width: 250px;
@@ -221,10 +255,6 @@ body{
     .contenar{
         width: 95%;
     }
-    .basket{
-        flex-wrap: wrap;
-    }
-    
     .parent_img_price{
         flex-basis: 100%;
     }
@@ -232,9 +262,13 @@ body{
         flex-basis: 100%;
         
     }
-    .input_number,.finsh_bay,.remove.input_number,.finsh_bay,.remove{
-        margin-top: 10px;
+    .item{
+        flex-wrap: wrap;
     }
+    .input_number,.remove_item{
+        width: 4.7rem;
+    }
+
 }
 
 @media screen and (max-width: 480px){
@@ -249,7 +283,16 @@ body{
     .img_product{
         height: 250px;
     }
-    .parent_bay_price{
-        flex-direction:row;
-    }
+   
+}
+@media screen and (max-width: 496px){
+    .contenar_basket{
+        max-width: 90%;
+       }
+    .titll_basket{
+        display: none;
+     }
+    .number_list{
+        width: 1.5rem;
+     }
 }
