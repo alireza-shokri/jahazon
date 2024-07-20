@@ -214,19 +214,21 @@ body{
 
 
 
- .boxx{
+.boxx{
     display: none;
-    width: 70px;
-    height: 70px;
     animation: autoo 7s linear infinite;
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%, -50%);
+
+    transform: translate(0, -50%);
+    background-color: aqua;
 }
+
+
 .circle{
-    width: 70px;
-    height: 70px;
+    width: 40px;
+    height: 40px;
     background-color: red;
     position: absolute;
     border-radius: 50%;    
@@ -246,8 +248,8 @@ body{
 }
 @keyframes identifier {
     from{
-        height: 70px;
-        width: 70px;
+        height: 50px;
+        width: 50px;
         background-color: white;
     }
     to{
