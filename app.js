@@ -12,11 +12,11 @@ const allproduct=[
     {id:6, img_src:'https://patch.com/img/cdn20/users/1911647/20240601/033104/img-1296___01153102257.jpg',price:97200,name_product:'house'},
 
 
-    {id:7, img_src:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfk-XXSCXviGd5SQ8B0iu_kYAb-9YsTPtIcg&s',price:973200,name_product:'phone'},
+    {id:7, img_src:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTfk-XXSCXviGd5SQ8B0iu_kYAb-9YsTPtIcg&s',price:9700,name_product:'phone'},
 
     {id:8, img_src:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT4f970JSQv5b_zza0Xghfq-wRwPJroW_6FFQ&s',price:11200,name_product:'phone2'},
 
-    {id:9, img_src:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0gw5I5PxtuFqjMlyr4O0o-iiW6zFMDnryIA&s',price:927200,name_product:'computar'},
+    {id:9, img_src:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0gw5I5PxtuFqjMlyr4O0o-iiW6zFMDnryIA&s',price:92900,name_product:'computar'},
 ]
 
 let $=document;
@@ -27,7 +27,7 @@ let totalll_price;
 let page=0;
 let basket=$.querySelector('.basket')
 let all_basket=$.querySelector('.all_basket')
-
+let fragment=$.createDocumentFragment()
 
 // createElement box first page-----------------------------------
 function createElement(object) {
@@ -60,8 +60,7 @@ function createElement(object) {
 
     parent_bay_price.append(price,btn_bay);
     box.append(img_product,id_box,name_product,parent_bay_price);
-    contenar.append(box);
-   
+    fragment.append(box);
 }
    
 // add number in svg baslet-----------------------------
@@ -98,7 +97,6 @@ function func_bay(event){
 
 // click basket-----------------------------------------
 function click_basket_by(){
-    console.log(list_select_product)
     if(list_select_product[0]){
         if(!page){
             contenar.innerHTML='';
@@ -109,6 +107,7 @@ function click_basket_by(){
             list_select_product.forEach(object => {
                 createElementBasket(object)
             });
+            contenar.append(fragment)
             chang_input()
             
             }
@@ -128,9 +127,10 @@ function click_house() {
         page=0;
         allproduct.forEach(function(object){
         createElement(object)
-    })}
-}
-let shomar=0
+    })
+    contenar.append(fragment)
+}}
+let shomar=0;
 // createElement basket -----------------------------------
 function createElementBasket(selet_obgect) {
     let item=$.createElement('div');
@@ -166,7 +166,7 @@ function createElementBasket(selet_obgect) {
 
     item.append(id_box,number_list,img_basket,price_basket,input_number,remove_item);
     basket.append(item)
-    contenar.append(all_basket)
+   fragment.append(all_basket)
     
 }
 
@@ -193,18 +193,15 @@ function remove_basket(elm) {
     add_number_toBasket();
 
     let new_number_list=$.querySelectorAll('.number_list')
-    console.log(new_number_list)
     for (var i=0;i<new_number_list.length;i++){
-       new_number_list[i].innerHTML=(i+1);
-    }
-  
+       new_number_list[i].innerHTML=(i+1);}
 }
 
 // window -------------------------------------------load
 window.onload=function (){
     allproduct.forEach(function(object){
-        createElement(object)
-    })
+        createElement(object)})
+    contenar.append(fragment) 
 }
 
 house_svg.addEventListener('click',click_house);
