@@ -104,17 +104,20 @@ function click_basket_by(){
             contenar.className='contenar_basket';
             all_basket.style.display='block'
             page=1; shomar=0
-            list_select_product.forEach(object => {
-                createElementBasket(object)
-            });
-            contenar.append(fragment)
-            chang_input()
-            
+
+            document.querySelector(".boxx").style.display="block";
+            setTimeout(()=>{
+                list_select_product.forEach(object => {
+                    createElementBasket(object)
+                });
+                chang_input()
+                document.querySelector(".boxx").style.display="none";
+            },4000)
             }
-        }
-        else 
-            if(!page)
-                alert ('هیچی نیست عزیزم')
+    }
+    else 
+        if(!page)
+            alert ('هیچی نیست عزیزم')
         
 }
 
