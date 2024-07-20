@@ -214,6 +214,50 @@ body{
 
 
 
+ .boxx{
+    display: none;
+    width: 70px;
+    height: 70px;
+    animation: autoo 7s linear infinite;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.circle{
+    width: 70px;
+    height: 70px;
+    background-color: red;
+    position: absolute;
+    border-radius: 50%;    
+    transform:
+        rotate(calc((var(--position)*90)*1deg))
+        translate(60px);
+    animation: identifier calc((var(--position)*1)*1s) infinite ;
+    animation-direction: alternate;
+}
+@keyframes autoo{
+    from{
+        transform: perspective(1000px) rotateY(0deg);
+    }
+    to{
+        transform: perspective(1000px) rotate(360deg);
+    }
+}
+@keyframes identifier {
+    from{
+        height: 70px;
+        width: 70px;
+        background-color: white;
+    }
+    to{
+        height: 30px;
+        width: 30px;
+        background-color: red;
+    }
+    
+}
+
 /* --------------------------media */
 @media screen and (max-width: 1200px){
    .box{
