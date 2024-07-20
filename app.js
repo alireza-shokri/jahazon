@@ -110,8 +110,9 @@ function click_basket_by(){
                 list_select_product.forEach(object => {
                     createElementBasket(object)
                 });
-                chang_input()
                 document.querySelector(".boxx").style.display="none";
+                contenar.append(fragment)
+                chang_input()
             },4000)
             }
     }
