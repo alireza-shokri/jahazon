@@ -7,17 +7,17 @@ body{
     box-sizing: border-box;
 }
 .parent_hed{
-    width:60%;
-    position: fixed;
-    top: 80px;
-    left: 50%;
-    transform:translate(-50%,0);
+    width:75%;
+    position: sticky;
+    top: 0px;
+    margin: 0 auto;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 0 0.4rem;
+    padding: 0.4rem 0.4rem;
     border: 1px solid black;
-    background-color: rgba(223, 216, 207,0.5);
+    background-color: rgba(223, 216, 207,0.3);
+    backdrop-filter: blur(20px);
     border-radius: 7px;
     box-shadow: 2px 2px 7px rgba(180, 174, 166, 0.87);
 }
@@ -50,7 +50,7 @@ body{
 /* .contenar------------------------------------------------------ */
 .contenar{
     max-width: 80%;
-    margin: 130px auto 50px auto;
+    margin: 60px auto 50px auto;
     display: flex;
     justify-content: space-around;
     flex-wrap: wrap;
