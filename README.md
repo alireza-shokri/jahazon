@@ -1,4 +1,4 @@
-# prohgect stor
+# project stor
 ---
 ![img](img/img_project.png)
 ---
